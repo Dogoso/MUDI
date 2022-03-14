@@ -1,7 +1,11 @@
 package com.doglab.mvc.mudi.dto;
 
-import com.doglab.mvc.mudi.models.Pedido;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.URL;
+
+import com.doglab.mvc.mudi.models.Pedido;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,13 +14,13 @@ import lombok.Setter;
 @Getter @Setter @NoArgsConstructor
 public class PedidoRequestDTO {
 
-	@NotBlank
+	@NotBlank @Size(min = 5, max = 255)
 	private String productName;
 	
-	@NotBlank
+	@NotBlank @URL
 	private String productUrl;
 	
-	@NotBlank
+	@NotBlank @URL
 	private String imageUrl;
 	private String productDescription;
 	
