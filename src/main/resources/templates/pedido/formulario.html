@@ -12,38 +12,36 @@
 	<title>Formulário</title>
 </head>
 <body>
-
 	<main class="container">
-		<div class="col-md-12">
+		<div class="col-md-12 mb-3">
 			<div class="h-100 p-5 bg-secondary bg-opacity-25">
 				<h1 class="display-4">Novo Pedido</h1>
 			</div>
 		</div>
-		
-		<form action="/pedido/novo" method="POST">
-			<div>
-				<label>Produto</label>
-				<input name="productName" type="text" placeholder="Nome do produto">
-				<small>Informe o nome do produto.</small>
-			</div>
-			<div>
-				<label>Url</label>
-				<input name="productUrl" type="text" placeholder="Url do produto">
-				<small>Informe a URL do produto encontrado na web.</small>
-			</div>
-			<div>
-				<label>Imagem</label>
-				<input name="imageUrl" type="text" placeholder="Imagem do produto">
-				<small>Informe a URL da imagem do produto encontrado na web.</small>
-			</div>
-			<div>
-				<label>Descrição</label>
-				<textarea name="productDescription" placeholder="Detalhes importantes"></textarea>
-			</div>
-			<input type="submit">
-		</form>
-		
+		<div class="card">
+			<form th:object="${pedidoRequestDTO}" class="p-3" action="/pedido/novo" method="POST">
+				<div class="mb-3">
+					<label>Produto</label>
+					<input th:field="*{productName}" class="form-control" type="text" placeholder="Nome do produto">
+					<small class="form-text">Informe o nome do produto.</small>
+				</div>
+				<div class="mb-3">
+					<label>Url</label>
+					<input th:field="*{productUrl}" class="form-control" type="text" placeholder="Url do produto">
+					<small class="form-text">Informe a URL do produto encontrado na web.</small>
+				</div>
+				<div class="mb-3">
+					<label>Imagem</label>
+					<input th:field="*{imageUrl}" class="form-control" type="text" placeholder="Imagem do produto">
+					<small class="form-text">Informe a URL da imagem do produto encontrado na web.</small>
+				</div>
+				<div class="mb-3">
+					<label>Descrição</label>
+					<textarea th:field="*{productDescription}" class="form-control" placeholder="Detalhes importantes"></textarea>
+				</div>
+				<input class="btn btn-primary" type="submit" value="Cadastrar">
+			</form>
+		</div>
 	</main>
-
 </body>
 </html>

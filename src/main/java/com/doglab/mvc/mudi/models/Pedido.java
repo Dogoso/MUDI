@@ -23,12 +23,14 @@ public class Pedido {
 	
 	private String name;
 	private BigDecimal price;
-	@Column(name = "delivery_date")
-	private LocalDate deliveryDate;
-	@Column(name = "product_url")
-	private String productUrl;
-	@Column(name = "image_url")
-	private String imageUrl;
 	private String description;
 	
+	@Column(name = "delivery_date")
+	private LocalDate deliveryDate;
+	
+	@Column(name = "product_url")
+	private String productUrl;
+	
+	@Column(name = "image_url")
+	private String imageUrl;
 }
