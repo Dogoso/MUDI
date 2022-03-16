@@ -35,7 +35,7 @@ public class PedidoController {
 		}
 		Pedido pedido = pedidoDTO.toPedido();
 		pedidoRepository.save(pedido);
-		return "pedido/formulario";
+		return "redirect:/home";
 	}
 	
 }

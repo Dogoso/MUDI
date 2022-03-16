@@ -5,6 +5,8 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,6 +27,9 @@ public class Pedido {
 	private BigDecimal price;
 	private String description;
 	
+	@Enumerated(EnumType.STRING)
+	private StatusPedido status;
+	
 	@Column(name = "delivery_date")
 	private LocalDate deliveryDate;
 	
@@ -33,4 +38,5 @@ public class Pedido {
 	
 	@Column(name = "image_url")
 	private String imageUrl;
+	
 }

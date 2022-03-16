@@ -1,22 +1,16 @@
 package com.doglab.mvc.mudi.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.doglab.mvc.mudi.models.Pedido;
+import com.doglab.mvc.mudi.models.StatusPedido;
 
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
-	
-	/*
-	@PersistenceContext
-	private EntityManager em;
-	
-	public List<Pedido> findAll()
-	{
-		String JPQL = "SELECT p FROM Pedido AS p";
-		return em.createNamedQuery(JPQL, Pedido.class)
-				.getResultList();
-	}
-	*/
+
+	List<Pedido> findByStatus(StatusPedido status);
+
 }

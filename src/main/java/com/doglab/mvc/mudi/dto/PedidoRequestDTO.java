@@ -6,6 +6,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.URL;
 
 import com.doglab.mvc.mudi.models.Pedido;
+import com.doglab.mvc.mudi.models.StatusPedido;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,6 +32,7 @@ public class PedidoRequestDTO {
 		pedido.setImageUrl(imageUrl);
 		pedido.setProductUrl(productUrl);
 		pedido.setDescription(productDescription);
+		pedido.setStatus(StatusPedido.AGUARDANDO);
 		return pedido;
 	}
 	
