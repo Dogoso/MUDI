@@ -33,7 +33,6 @@ public class HomeController {
 	public ModelAndView homeStatus(@PathVariable("pedidoStatus") String status, ModelAndView mv) {
 		List<Pedido> pedidos = 
 				pedidoRepository.findByStatus(StatusPedido.valueOf(status.toUpperCase()));
-		pedidos.sort(null);
 		mv.setViewName("home");
 		mv.addObject("pedidos", pedidos);
 		mv.addObject("status", status);
