@@ -1,4 +1,4 @@
-<head th:fragment="head">
+<head th:fragment="head(title)">
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +7,10 @@
 		rel="stylesheet"
 		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 		crossorigin="anonymous">
-	<title>Home</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-	<title>Formulário</title>
+	<title th:text="${title}">Título</title>
 	<style type="text/css">
 	
 		.logo-container{
@@ -36,10 +35,16 @@
 	<span>
 		<a class="logo" href="/home">Mudi</a>
 	</span>
-	<span class="mt-2">Login</span>
+	<span sec:authorize="!isAuthenticated()" class="mt-2">
+		<a class="text-light" href="/login">Login</a>
+	</span>
+	<span sec:authorize="isAuthenticated()" class="mt-2">
+		<a onclick="document.getElementById('form-logout').submit()" class="text-light" href="#">Logout</a>
+		<form id="form-logout" th:action="@{/logout}" method="post"></form>
+	</span>
 </header>
 
-<div th:fragment="title(value)" class="col-md-12">
+<div th:fragment="title(value)" class="col-md-12 mb-3">
 	<div class="h-100 p-5 bg-secondary bg-opacity-25">
 		<h1 class="display-4" th:text="${value}">Meus Pedidos</h1>
 	</div>
