@@ -1,5 +1,6 @@
 package com.doglab.mvc.mudi.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,8 @@ public class HomeController {
 	private PedidoRepository pedidoRepository;
 
 	@GetMapping
-	public ModelAndView home(ModelAndView mv) {
-		List<Pedido> pedidos = pedidoRepository.findAll();
+	public ModelAndView home(ModelAndView mv, Principal principal) {
+		List<Pedido> pedidos = pedidoRepository.findAllByUser(principal.getName());
 		mv.setViewName("home");
 		mv.addObject("pedidos", pedidos);
 		return mv;

@@ -35,11 +35,15 @@
 	<span>
 		<a class="logo" href="/home">Mudi</a>
 	</span>
+	
 	<span sec:authorize="!isAuthenticated()" class="mt-2">
 		<a class="text-light" href="/login">Login</a>
 	</span>
+	
 	<span sec:authorize="isAuthenticated()" class="mt-2">
-		<a onclick="document.getElementById('form-logout').submit()" class="text-light" href="#">Logout</a>
+		<a onclick="document.getElementById('form-logout').submit()" class="text-light" href="#">
+			Logout
+		</a>
 		<form id="form-logout" th:action="@{/logout}" method="post"></form>
 	</span>
 </header>
