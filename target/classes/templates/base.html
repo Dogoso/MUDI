@@ -31,21 +31,42 @@
 	</style>
 </head>
 
-<header th:fragment="header" class="logo-container mb-3 p-4 d-flex justify-content-between">
-	<span>
-		<a class="logo" href="/home">Mudi</a>
-	</span>
-	
-	<span sec:authorize="!isAuthenticated()" class="mt-2">
-		<a class="text-light" href="/login">Login</a>
-	</span>
-	
-	<span sec:authorize="isAuthenticated()" class="mt-2">
-		<a onclick="document.getElementById('form-logout').submit()" class="text-light" href="#">
-			Logout
-		</a>
-		<form id="form-logout" th:action="@{/logout}" method="post"></form>
-	</span>
+<header th:fragment="header">
+	<div class="row m-0">
+		<div class="logo-container mb-2 p-4 d-flex justify-content-between">
+			<span>
+				<a class="logo" href="/home">Mudi</a>
+			</span>
+			
+			<span sec:authorize="!isAuthenticated()" class="mt-2">
+				<a class="text-light" href="/login">Login</a>
+			</span>
+			
+			<span sec:authorize="isAuthenticated()" class="mt-2">
+				<a onclick="document.getElementById('form-logout').submit()" class="text-light" href="#">
+					Logout
+				</a>
+				<form id="form-logout" th:action="@{/logout}" method="post"></form>
+			</span>
+		</div>
+	</div>
+	<div sec:authorize="isAuthenticated()" class="row m-0">
+		<nav class="navbar navbar-expand bg-light pt-0">
+			<div class="container-fluid">
+				<ul class="navbar-nav">
+			        <li class="nav-item">
+			          <a class="nav-link" th:href="@{/home}">Home</a>
+			        </li>
+			        <li class="nav-item">
+			          <a class="nav-link" th:href="@{/user/pedido}">Meus pedidos</a>
+			        </li>
+			        <li class="nav-item">
+			          <a class="nav-link" th:href="@{/ofertas/nova}">Nova oferta</a>
+			        </li>
+			    </ul>
+			</div>
+		</nav>
+	</div>
 </header>
 
 <div th:fragment="title(value)" class="col-md-12 mb-3">

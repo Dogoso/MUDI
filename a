@@ -1,0 +1,79 @@
+[33mcommit a2351fac43481c101d483b127b79b164023c31ed[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 2a620d9 9768534
+Author: Silas Lago <juanfsa@live.com>
+Date:   Tue Mar 22 23:16:47 2022 -0300
+
+    Merge branch 'main' of github.com:Dogoso/MUDI
+
+[33mcommit 2a620d98376eebdef617fcf3ea2dc4a1d85e4a58[m
+Author: Silas Lago <juanfsa@live.com>
+Date:   Tue Mar 22 23:16:31 2022 -0300
+
+    Spring security (login & logout)
+
+[33mcommit 976853426e89f0a0a80537c480b9a076f22578f9[m
+Author: Silas Lago <juanfsa@live.com>
+Date:   Mon Mar 21 14:14:42 2022 -0300
+
+    Update README.md
+
+[33mcommit 5136e01bec031f6b66b11725c02aec3dfb83c8aa[m
+Author: Silas Lago <juanfsa@live.com>
+Date:   Wed Mar 16 17:52:37 2022 -0300
+
+    Price null fixed and Comparator null fixed
+
+[33mcommit 1703de8f6a8a25f44fff8fbdc71105f58f92398d[m
+Merge: 8dadbb2 793fe7b
+Author: Silas Lago <juanfsa@live.com>
+Date:   Wed Mar 16 17:41:15 2022 -0300
+
+    Merge branch 'main' of github.com:Dogoso/MUDI
+
+[33mcommit 8dadbb201db8519a2282892ab0f4c801ffd4d638[m
+Author: Silas Lago <juanfsa@live.com>
+Date:   Wed Mar 16 17:41:00 2022 -0300
+
+    Navbar, formating values with thymeleaf and PedidoStatus
+
+[33mcommit 793fe7be7a3a337373fdf5e3b39e5ee948fdec80[m
+Author: Silas Lago <juanfsa@live.com>
+Date:   Mon Mar 14 19:28:15 2022 -0300
+
+    Update README.md
+
+[33mcommit ad1e4c73e7ca57b5aac6751b2d2993f8252d02d7[m
+Author: Silas Lago <juanfsa@live.com>
+Date:   Mon Mar 14 19:27:06 2022 -0300
+
+    Validation with bootstrap and Bean validation
+
+[33mcommit 4307d7ff0d7b7eb5ca2110cfd7e644e5eade74a4[m
+Author: Silas Lago <juanfsa@live.com>
+Date:   Mon Mar 14 15:31:03 2022 -0300
+
+    Bean validation added
+
+[33mcommit aabc25cdde689f51865c24657372f87d79cea107[m
+Author: Silas Lago <juanfsa@live.com>
+Date:   Sun Mar 13 15:19:34 2022 -0300
+
+    Formulario de novos pedidos
+
+[33mcommit 37111be700b3e7c28f791bcd5c49902e6e1ea2bd[m
+Author: Silas Lago <juanfsa@live.com>
+Date:   Sun Mar 13 13:09:30 2022 -0300
+
+    Navbar & jumbotron
+
+[33mcommit 8523efc9407dc015423f9684e3e8f2c587cf0a4a[m
+Author: Silas Lago <juanfsa@live.com>
+Date:   Fri Mar 11 21:30:44 2022 -0300
+
+    Creating bootstrap page (home)
+
+[33mcommit 3c27b7262f167aa5133abb5f33dfab473212c897[m
+Author: Silas Lago <juanfsa@live.com>
+Date:   Fri Mar 11 21:29:37 2022 -0300
+
+    Initial commit

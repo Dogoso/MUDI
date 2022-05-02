@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head th:replace="~{base :: head(title = 'Home')}"></head>
+<body>
+	<header th:replace="~{base :: header}"></header>
+	<main class="container" id="pedidos">
+		<div th:replace="~{base :: title(value = 'Faça sua oferta!')}"></div>
+		<div class="card mb-3" v-for="pedido in pedidos">
+			<header>
+				<h1 class="card-header alert-warning">
+					{{ pedido.name }}
+				</h1>
+			</header>
+			<div class="row card-body">
+				<div class="col-12 col-md-8 mb-3">
+					<div class="row">
+						<div class="col-sm-5">
+							Valor: <input/>
+						</div>
+						<div class="col-sm-7">
+							Data de entrega: <input/>
+						</div>
+					</div>
+					<div>
+						<div>Produto:</div>
+						<a target="_blank" v-bind:href="pedido.productUrl" type="text" name="urlText" id="urlText">
+							{{ pedido.name }}
+						</a>
+					</div>
+					<div>
+						<div>Descrição:</div>
+						<textarea class="form-control" name="description" id="textdescription" cols="30" rows="10">{{ pedido.description }}</textarea>
+					</div>
+				</div>
+				<div class="col-12 col-md-4">
+					<img class="img-thumbnail" v-bind:src="pedido.imageUrl" alt="Product image">
+				</div>
+			</div>
+		</div>
+	</main>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		window.onload = () => {
+			var pedidos = new Vue({
+				el: '#pedidos',
+				data: {
+					pedidos: []
+				},
+				mounted () {
+					axios
+						.get('http://localhost:8080/api/pedidos')
+						.then(response => (this.pedidos = response.data))
+				}
+			})
+		}
+	</script>
+</body>
+</html>
