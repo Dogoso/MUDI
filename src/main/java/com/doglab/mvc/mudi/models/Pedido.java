@@ -2,6 +2,7 @@ package com.doglab.mvc.mudi.models;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -31,11 +33,7 @@ public class Pedido {
 	private String name;
 	private BigDecimal price;
 	private String description;
-	
-	@JsonBackReference
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private User user;
-	
+
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
 	
@@ -47,5 +45,13 @@ public class Pedido {
 	
 	@Column(name = "image_url")
 	private String imageUrl;
+	
+	@JsonBackReference
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private User user;
+	
+	@JsonBackReference
+	@OneToMany(mappedBy = "pedido", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Oferta> ofertas;
 	
 }

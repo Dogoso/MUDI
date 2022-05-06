@@ -14,18 +14,32 @@ import com.doglab.mvc.mudi.models.StatusPedido;
 import com.doglab.mvc.mudi.repositories.PedidoRepository;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/pedidos")
 public class PedidosRest {
 
 	@Autowired
 	private PedidoRepository pedidoRepository;
 	
-	//Endpoint para o VUEJS
-	@GetMapping("/pedidos")
-	public List<Pedido> getPedidos() {
+	//Endpoints
+	@GetMapping("/aguardando")
+	public List<Pedido> getPedidosAguardando() {
 		Sort sort = Sort.by("id").ascending();
 		PageRequest pageRequest = PageRequest.of(0, 10, sort);
 		return pedidoRepository.findByStatus(StatusPedido.AGUARDANDO, pageRequest);
+	}
+	
+	@GetMapping("/aprovado")
+	public List<Pedido> getPedidosAprovados() {
+		Sort sort = Sort.by("id").ascending();
+		PageRequest pageRequest = PageRequest.of(0, 10, sort);
+		return pedidoRepository.findByStatus(StatusPedido.APROVADO, pageRequest);
+	}
+	
+	@GetMapping("/entregue")
+	public List<Pedido> getPedidosEntregues() {
+		Sort sort = Sort.by("id").ascending();
+		PageRequest pageRequest = PageRequest.of(0, 10, sort);
+		return pedidoRepository.findByStatus(StatusPedido.ENTREGUE, pageRequest);
 	}
 	
 }

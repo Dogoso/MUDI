@@ -15,10 +15,10 @@
 				<div class="col-12 col-md-8 mb-3">
 					<div class="row">
 						<div class="col-sm-5">
-							Valor: <input/>
+							Valor: <input class="form-control" v-model="pedido.price"/>
 						</div>
 						<div class="col-sm-7">
-							Data de entrega: <input/>
+							Data de entrega: <input class="form-control" v-model="pedido.deliveryDate" />
 						</div>
 					</div>
 					<div>
@@ -28,9 +28,19 @@
 						</a>
 					</div>
 					<div>
-						<div>Descrição:</div>
-						<textarea class="form-control" name="description" id="textdescription" cols="30" rows="10">{{ pedido.description }}</textarea>
+						<label>Descrição:</label>
+						<textarea disabled="disabled" class="form-control" name="description" id="textdescription" cols="30" rows="10">
+							{{ pedido.description }}
+						</textarea>
 					</div>
+					<div>
+						<label>Comentário:</label>
+						<textarea class="form-control" v-model="pedido.comentary" name="description" id="textdescription" cols="30" rows="10">
+							
+						</textarea>
+					</div>
+					<button v-if="pedido.ofertaEnviada" type="button" class="btn btn-success mt-3">Oferta Enviada &#x2714;</button>
+					<button v-else v-on:click="enviarOferta(pedido)" type="button" class="btn btn-primary mt-3">Ofertar</button>
 				</div>
 				<div class="col-12 col-md-4">
 					<img class="img-thumbnail" v-bind:src="pedido.imageUrl" alt="Product image">
@@ -50,8 +60,23 @@
 				},
 				mounted () {
 					axios
-						.get('http://localhost:8080/api/pedidos')
-						.then(response => (this.pedidos = response.data))
+						.get('http://localhost:8080/api/pedidos/aguardando')
+						.then(response => {
+							response.data.forEach(pedido => pedido.ofertaEnviada = false)
+							this.pedidos = response.data
+						})
+				},
+				methods: {
+					enviarOferta: function(pedido) {
+						axios
+							.post('http://localhost:8080/api/ofertas', {
+								pedidoId: pedido.id,
+								deliveryDate: pedido.deliveryDate,
+								comentary: pedido.comentary,
+								value: pedido.price
+							})
+							.then(response => pedido.ofertaEnviada = true)
+					}
 				}
 			})
 		}
