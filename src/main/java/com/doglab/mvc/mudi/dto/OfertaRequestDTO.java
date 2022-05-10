@@ -18,9 +18,9 @@ public class OfertaRequestDTO {
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	
 	private Long pedidoId;
-	@NotNull @Pattern(regexp = "^\\d+(\\.\\d+{2})?$")
-	private String deliveryDate;
 	@NotNull @Pattern(regexp = "^\\d{2}/\\d{2}/\\d{4}$")
+	private String deliveryDate;
+	@NotNull @Pattern(regexp = "^\\d+(\\.\\d+{2})?$")
 	private String value;
 	private String comentary;
 	

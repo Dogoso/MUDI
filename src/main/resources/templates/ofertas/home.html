@@ -15,10 +15,18 @@
 				<div class="col-12 col-md-8 mb-3">
 					<div class="row">
 						<div class="col-sm-5">
-							Valor: <input class="form-control" v-model="pedido.price"/>
+							<label for="input-value">Valor:</label> 
+							<input v-bind:class="{ 'is-invalid': pedido.errors.value != '' }" name="input-value" class="form-control" v-model="pedido.price"/>
+							<div class="invalid-feedback" v-if="pedido.errors.value != ''">
+								{{pedido.errors.value}}
+							</div>
 						</div>
 						<div class="col-sm-7">
-							Data de entrega: <input class="form-control" v-model="pedido.deliveryDate" />
+							<label for="input-delivery">Data de entrega: </label>
+							<input v-bind:class="{ 'is-invalid': pedido.errors.deliveryDate != '' }" name="input-delivery" class="form-control" v-model="pedido.deliveryDate" />
+							<div class="invalid-feedback" v-if="pedido.errors.deliveryDate != ''">
+								{{pedido.errors.deliveryDate}}
+							</div>
 						</div>
 					</div>
 					<div>
@@ -62,12 +70,24 @@
 					axios
 						.get('http://localhost:8080/api/pedidos/aguardando')
 						.then(response => {
-							response.data.forEach(pedido => pedido.ofertaEnviada = false)
+							response.data.forEach(pedido => {
+								pedido.ofertaEnviada = false	
+								pedido.errors = {
+									value: '',
+									deliveryDate: ''
+								}
+							})
 							this.pedidos = response.data
 						})
 				},
 				methods: {
 					enviarOferta: function(pedido) {
+						
+						pedido.errors = {
+							value: '',
+							deliveryDate: ''
+						}
+						
 						axios
 							.post('http://localhost:8080/api/ofertas', {
 								pedidoId: pedido.id,
@@ -76,6 +96,11 @@
 								value: pedido.price
 							})
 							.then(response => pedido.ofertaEnviada = true)
+							.catch(error => {
+								error.response.data.errors.forEach(errorMsg => {
+									pedido.errors[errorMsg.field] = errorMsg.defaultMessage
+								})
+							})
 					}
 				}
 			})
