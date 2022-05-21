@@ -14,8 +14,12 @@ import com.doglab.mvc.mudi.models.StatusPedido;
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 
-	@Cacheable("produtosEntregues")
+	@Cacheable("todosProdutosEntregues")
 	List<Pedido> findByStatus(StatusPedido status, Pageable pageable);
+	
+	@Cacheable("produtosEntregues")
+	@Query("SELECT p FROM Pedido p JOIN FETCH p.user u WHERE u.username != :user AND p.status = :status")
+	List<Pedido> findByStatusAndUsers(String user, StatusPedido status, Pageable pageable);
 	
 	List<Pedido> findByStatus(StatusPedido status);
 

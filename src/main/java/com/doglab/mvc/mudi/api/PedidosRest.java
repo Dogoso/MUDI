@@ -1,5 +1,6 @@
 package com.doglab.mvc.mudi.api;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,21 +23,30 @@ public class PedidosRest {
 	
 	//Endpoints
 	@GetMapping("/aguardando")
-	public List<Pedido> getPedidosAguardando() {
+	public List<Pedido> getPedidosAguardando(Principal principal) {
+		Sort sort = Sort.by("id").ascending();
+		PageRequest pageRequest = PageRequest.of(0, 10, sort);
+		System.out.println(principal.getName());
+		return pedidoRepository.findByStatusAndUsers(principal.getName(), StatusPedido.AGUARDANDO, pageRequest);
+	}
+	
+	//Endpoints
+	@GetMapping("/todos/aguardando")
+	public List<Pedido> getAllPedidosAguardando() {
 		Sort sort = Sort.by("id").ascending();
 		PageRequest pageRequest = PageRequest.of(0, 10, sort);
 		return pedidoRepository.findByStatus(StatusPedido.AGUARDANDO, pageRequest);
 	}
 	
-	@GetMapping("/aprovado")
-	public List<Pedido> getPedidosAprovados() {
+	@GetMapping("/todos/aprovado")
+	public List<Pedido> getAllPedidosAprovados() {
 		Sort sort = Sort.by("id").ascending();
 		PageRequest pageRequest = PageRequest.of(0, 10, sort);
 		return pedidoRepository.findByStatus(StatusPedido.APROVADO, pageRequest);
 	}
 	
-	@GetMapping("/entregue")
-	public List<Pedido> getPedidosEntregues() {
+	@GetMapping("/todos/entregue")
+	public List<Pedido> getAllPedidosEntregues() {
 		Sort sort = Sort.by("id").ascending();
 		PageRequest pageRequest = PageRequest.of(0, 10, sort);
 		return pedidoRepository.findByStatus(StatusPedido.ENTREGUE, pageRequest);
