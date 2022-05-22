@@ -11,28 +11,8 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 	<title th:text="${title}">Título</title>
-	<style type="text/css">
-	
-		textarea {
-			max-height: 100px;
-		}
-	
-		.logo-container{
-			background-color: #00B6F4FF;
-			color: white;
-		}
-		
-		.logo{
-			font: bold 2em 'Patrick Hand', cursive;
-			text-decoration: none;
-			color: white;
-		}
-		
-		.logo:hover{
-			color: white;
-		}
-		
-	</style>
+	<link rel="shortcut icon" href="../images/favicon-mudi.ico" type="image/x-icon">
+	<style th:replace="~{style :: styleCss}"></style>
 </head>
 
 <header th:fragment="header">
@@ -43,7 +23,7 @@
 			</span>
 			
 			<span sec:authorize="!isAuthenticated()" class="mt-2">
-				<a class="text-light" href="/login">Login</a>
+				<a class="text-light" href="/login">Login/Cadastro</a>
 			</span>
 			
 			<span sec:authorize="isAuthenticated()" class="mt-2">

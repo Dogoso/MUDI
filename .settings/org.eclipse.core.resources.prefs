@@ -2,6 +2,7 @@ eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/main/resources/messages.properties=UTF-8
+encoding//src/main/resources/templates/cadastro/cadastro.html=UTF-8
 encoding//src/main/resources/templates/login.html=UTF-8
 encoding//src/main/resources/templates/ofertas/home.html=UTF-8
 encoding//src/main/resources/templates/pedido/formulario.html=UTF-8
